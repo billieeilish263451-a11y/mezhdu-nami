@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Между нами</title>
+
+<style>
+body {
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #f8e8e8;
+    font-family: Arial, sans-serif;
+}
+
+.game {
+    width: 90%;
+    max-width: 400px;
+    text-align: center;
+}
+
+h1 {
+    color: #8b3a62;
+    font-size: 34px;
+}
+
+.subtitle {
+    color: #555;
+}
+
+.card {
+    background: white;
+    border-radius: 25px;
+    padding: 30px 20px;
+    margin: 30px 0;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+}
+
+.category {
+    color: #b05a7a;
+    font-size: 14px;
+    margin-bottom: 20px;
+}
+
+.question {
+    font-size: 22px;
+    line-height: 1.4;
+}
+
+button {
+    width: 100%;
+    border: none;
+    border-radius: 15px;
+    padding: 15px;
+    margin-top: 12px;
+    font-size: 18px;
+    background: #8b3a62;
+    color: white;
+}
+
+button:active {
+    transform: scale(0.98);
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="game">
+
+<h1>Между нами</h1>
+
+<p class="subtitle">
+Игра для двоих, чтобы стать ближе ❤️
+</p>
+
+<div class="card">
+
+<div class="category" id="category">
+Начало
+</div>
+
+<div class="question" id="question">
+Нажмите кнопку, чтобы начать
+</div>
+
+</div>
+
+<button onclick="nextQuestion()">
+Следующий вопрос
+</button>
+
+</div>
+
+
+<script>
+
+const cards = [
+{
+category:"Воспоминания",
+question:"Какой момент со мной тебе хочется пережить ещё раз?"
+},
+{
+category:"Чувства",
+question:"Что во мне заставляет тебя улыбаться?"
+},
+{
+category:"Мечты",
+question:"Какой наш общий день был бы для тебя идеальным?"
+},
+{
+category:"Близость",
+question:"Когда ты чувствуешь себя со мной наиболее любимым?"
+},
+{
+category:"Секреты",
+question:"Что ты давно хотел мне сказать, но не говорил?"
+}
+];
+
+
+let index = 0;
+
+
+function nextQuestion(){
+
+document.getElementById("category").innerHTML =
+cards[index].category;
+
+document.getElementById("question").innerHTML =
+cards[index].question;
+
+index++;
+
+if(index >= cards.length){
+index = 0;
+}
+
+}
+
+</script>
+
+</body>
+</html>
