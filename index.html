@@ -159,22 +159,6 @@ let currentCategory = "";
 let currentIndex = 0;
 
 
-function showQuestion(){
-
-let question =
-cards[currentCategory][currentIndex];
-
-document.getElementById("category").innerHTML =
-currentCategory;
-
-document.getElementById("question").innerHTML =
-question;
-
-document.getElementById("counter").innerHTML =
-"Вопрос " + (currentIndex + 1) + " из " + cards[currentCategory].length;
-
-}
-
 
 function startGame(category){
 
@@ -203,6 +187,9 @@ currentCategory;
 
 document.getElementById("question").innerHTML =
 question;
+
+document.getElementById("counter").innerHTML =
+"Вопрос " + (currentIndex + 1) + " из " + cards[currentCategory].length;
 
 }
 
