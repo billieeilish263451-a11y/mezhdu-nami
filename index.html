@@ -124,7 +124,7 @@ button:active {
 
 <div id="game" class="hidden">
 
-<div class="card">
+<div class="card" id="card">
 
 <div class="category" id="category">
 </div>
@@ -132,10 +132,17 @@ button:active {
 <div class="question" id="question">
 </div>
 
+<div id="counter">
+</div>
+
 </div>
 
 <button onclick="nextQuestion()">
-Следующий вопрос
+Следующий вопрос →
+</button>
+
+<button onclick="showCategories()">
+← Выбрать другую тему
 </button>
 
 </div>
@@ -152,11 +159,19 @@ let currentCategory = "";
 let currentIndex = 0;
 
 
-function showCategories(){
+function showQuestion(){
 
-document.getElementById("start").classList.add("hidden");
+let question =
+cards[currentCategory][currentIndex];
 
-document.getElementById("categories").classList.remove("hidden");
+document.getElementById("category").innerHTML =
+currentCategory;
+
+document.getElementById("question").innerHTML =
+question;
+
+document.getElementById("counter").innerHTML =
+"Вопрос " + (currentIndex + 1) + " из " + cards[currentCategory].length;
 
 }
 
@@ -164,6 +179,10 @@ document.getElementById("categories").classList.remove("hidden");
 function startGame(category){
 
 currentCategory = category;
+
+cards[currentCategory] = cards[currentCategory]
+.sort(() => Math.random() - 0.5);
+
 currentIndex = 0;
 
 document.getElementById("categories").classList.add("hidden");
@@ -173,7 +192,6 @@ document.getElementById("game").classList.remove("hidden");
 showQuestion();
 
 }
-
 
 function showQuestion(){
 
