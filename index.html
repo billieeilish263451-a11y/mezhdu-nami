@@ -188,15 +188,19 @@ function showQuestion(){
 let question =
 cards[currentCategory][currentIndex];
 
-document.getElementById("category").innerHTML =
-currentCategory;
+let categoryNames = {
+feelings: "💗 Чувства",
+dreams: "✨ Мечты",
+honest: "🌙 Откровенно",
+fun: "😄 Весёлые"
+};
 
+document.getElementById("category").innerHTML =
+categoryNames[currentCategory];
 document.getElementById("question").innerHTML =
 question;
-
 document.getElementById("counter").innerHTML =
 "Вопрос " + (currentIndex + 1) + " из " + cards[currentCategory].length;
-
 }
 
 
