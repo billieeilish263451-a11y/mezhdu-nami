@@ -3,89 +3,133 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Между нами</title>
 
 <style>
 body {
-    margin: 0;
-    min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: #f8e8e8;
-    font-family: Arial, sans-serif;
+    margin:0;
+    min-height:100vh;
+    background:linear-gradient(135deg,#f9d7e3,#fff4f7);
+    font-family:Arial,sans-serif;
+    display:flex;
+    justify-content:center;
+    align-items:center;
 }
 
-.game {
-    width: 90%;
-    max-width: 400px;
-    text-align: center;
+.container {
+    width:90%;
+    max-width:420px;
+    text-align:center;
 }
 
 h1 {
-    color: #8b3a62;
-    font-size: 34px;
+    font-size:38px;
+    color:#8b3a62;
 }
 
 .subtitle {
-    color: #555;
+    color:#666;
 }
 
 .card {
-    background: white;
-    border-radius: 25px;
-    padding: 30px 20px;
-    margin: 30px 0;
-    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+    background:white;
+    border-radius:25px;
+    padding:30px 20px;
+    margin:25px 0;
+    box-shadow:0 10px 30px rgba(0,0,0,0.15);
 }
 
 .category {
-    color: #b05a7a;
-    font-size: 14px;
-    margin-bottom: 20px;
+    color:#b05a7a;
+    font-weight:bold;
+    margin-bottom:20px;
 }
 
 .question {
-    font-size: 22px;
-    line-height: 1.4;
+    font-size:22px;
+    line-height:1.5;
 }
 
 button {
-    width: 100%;
-    border: none;
-    border-radius: 15px;
-    padding: 15px;
-    margin-top: 12px;
-    font-size: 18px;
-    background: #8b3a62;
-    color: white;
+    width:100%;
+    padding:16px;
+    margin:8px 0;
+    border:0;
+    border-radius:18px;
+    background:#8b3a62;
+    color:white;
+    font-size:18px;
 }
 
 button:active {
-    transform: scale(0.98);
+    transform:scale(.97);
 }
+
+.hidden {
+    display:none;
+}
+
+.category-btn {
+    background:#ffffff;
+    color:#8b3a62;
+    border:2px solid #8b3a62;
+}
+
 </style>
 
 </head>
 
 <body>
 
-<div class="game">
+<div class="container">
 
-<h1>Между нами</h1>
+<div id="start">
+
+<h1>Между нами ❤️</h1>
 
 <p class="subtitle">
-Игра для двоих, чтобы стать ближе ❤️
+Игра, которая помогает стать ближе
 </p>
+
+<button onclick="showCategories()">
+Начать игру
+</button>
+
+</div>
+
+
+<div id="categories" class="hidden">
+
+<h1>Выбери тему</h1>
+
+<button class="category-btn" onclick="startGame('feelings')">
+💗 Чувства
+</button>
+
+<button class="category-btn" onclick="startGame('dreams')">
+✨ Мечты
+</button>
+
+<button class="category-btn" onclick="startGame('honest')">
+🌙 Откровенно
+</button>
+
+<button class="category-btn" onclick="startGame('fun')">
+😄 Весёлые
+</button>
+
+</div>
+
+
+<div id="game" class="hidden">
 
 <div class="card">
 
 <div class="category" id="category">
-Начало
 </div>
 
 <div class="question" id="question">
-Нажмите кнопку, чтобы начать
 </div>
 
 </div>
@@ -96,49 +140,99 @@ button:active {
 
 </div>
 
+</div>
+
 
 <script>
+    const cards = {
 
-const cards = [
-{
-category:"Воспоминания",
-question:"Какой момент со мной тебе хочется пережить ещё раз?"
-},
-{
-category:"Чувства",
-question:"Что во мне заставляет тебя улыбаться?"
-},
-{
-category:"Мечты",
-question:"Какой наш общий день был бы для тебя идеальным?"
-},
-{
-category:"Близость",
-question:"Когда ты чувствуешь себя со мной наиболее любимым?"
-},
-{
-category:"Секреты",
-question:"Что ты давно хотел мне сказать, но не говорил?"
+feelings:[
+"Что во мне заставляет тебя улыбаться?",
+"Когда ты впервые понял(а), что я тебе нравлюсь?",
+"Какой мой поступок ты никогда не забудешь?",
+"Что ты больше всего ценишь в наших отношениях?",
+"В какой момент рядом со мной ты чувствуешь себя счастливым?"
+],
+
+dreams:[
+"Какой наш идеальный день вместе?",
+"Куда ты хотел(а) бы поехать со мной?",
+"Какая наша общая мечта?",
+"Какой дом ты представляешь для нас?",
+"Что бы ты хотел(а), чтобы мы обязательно сделали вместе?"
+],
+
+honest:[
+"О чём тебе сложно говорить, но ты хотел(а) бы поделиться?",
+"Что ты хочешь улучшить в наших отношениях?",
+"Чего тебе иногда не хватает от меня?",
+"Какой страх ты редко показываешь другим?",
+"Что бы ты хотел(а), чтобы я понимал(а) лучше?"
+],
+
+fun:[
+"Какой мой самый смешной момент?",
+"Если бы мы поменялись жизнями на день, что бы ты сделал?",
+"Какое наше самое странное приключение?",
+"Какое прозвище ты бы мне придумал?",
+"Какой фильм лучше всего описывает нас?"
+]
+
+};
+
+
+let currentCategory = "";
+let currentIndex = 0;
+
+
+function showCategories(){
+
+document.getElementById("start").classList.add("hidden");
+
+document.getElementById("categories").classList.remove("hidden");
+
 }
-];
 
 
-let index = 0;
+function startGame(category){
+
+currentCategory = category;
+currentIndex = 0;
+
+document.getElementById("categories").classList.add("hidden");
+
+document.getElementById("game").classList.remove("hidden");
+
+showQuestion();
+
+}
+
+
+function showQuestion(){
+
+let question =
+cards[currentCategory][currentIndex];
+
+document.getElementById("category").innerHTML =
+currentCategory;
+
+document.getElementById("question").innerHTML =
+question;
+
+}
 
 
 function nextQuestion(){
 
-document.getElementById("category").innerHTML =
-cards[index].category;
+currentIndex++;
 
-document.getElementById("question").innerHTML =
-cards[index].question;
+if(currentIndex >= cards[currentCategory].length){
 
-index++;
+currentIndex = 0;
 
-if(index >= cards.length){
-index = 0;
 }
+
+showQuestion();
 
 }
 
