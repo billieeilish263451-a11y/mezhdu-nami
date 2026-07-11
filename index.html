@@ -154,6 +154,10 @@ button:active {
 Следующий вопрос →
 </button>
 
+<button onclick="saveQuestion()">
+❤️ Сохранить вопрос
+</button>
+
 <button onclick="showCategories()">
 ← Выбрать другую тему
 </button>
@@ -195,7 +199,15 @@ document.getElementById("game").classList.remove("hidden");
 showQuestion();
 
 }
+let savedQuestions = [];
 
+function saveQuestion(){
+
+savedQuestions.push(cards[currentCategory][currentIndex]);
+
+alert("❤️ Вопрос сохранён!");
+
+}
 function showQuestion(){
 
 let question =
