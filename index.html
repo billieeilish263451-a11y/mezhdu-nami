@@ -64,7 +64,25 @@ to {
     line-height:1.5;
 }
 
+
+#progress{
+width:100%;
+height:10px;
+background:#f0d6df;
+border-radius:10px;
+margin-top:18px;
+overflow:hidden;
+}
+
+#progressFill{
+width:0%;
+height:100%;
+background:#d85b91;
+transition:0.4s;
+}
+
 button {
+
     width:100%;
     padding:16px;
     margin:8px 0;
@@ -147,7 +165,9 @@ button:active {
 
 <div id="counter">
 </div>
-
+<div id="progress">
+<div id="progressFill"></div>
+</div>
 </div>
 
 <button onclick="nextQuestion()">
@@ -226,6 +246,11 @@ document.getElementById("question").innerHTML =
 question;
 document.getElementById("counter").innerHTML =
 "Вопрос " + (currentIndex + 1) + " из " + cards[currentCategory].length;
+let percent =
+((currentIndex + 1) / cards[currentCategory].length) * 100;
+
+document.getElementById("progressFill").style.width =
+percent + "%";
 }
 
 
