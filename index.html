@@ -55,6 +55,12 @@ to {
     transform:translateY(0) scale(1);
 }
 }   
+    
+.fadeOut {
+    opacity:0;
+    transform:translateY(15px);
+    transition:0.2s;
+}
 .card.change {
     animation: cardFlip 0.4s ease;
 }
@@ -291,6 +297,12 @@ percent + "%";
 
 function nextQuestion(){
 
+let card = document.getElementById("card");
+
+card.classList.add("fadeOut");
+
+setTimeout(function(){
+
 currentIndex++;
 
 if(currentIndex >= cards[currentCategory].length){
@@ -300,6 +312,10 @@ currentIndex = 0;
 }
 
 showQuestion();
+
+card.classList.remove("fadeOut");
+
+}, 200);
 
 }
 </script>  
