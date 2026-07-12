@@ -149,7 +149,10 @@ button:active {
 <button class="category-btn" onclick="startGame('fun')">
 😄 Весёлые
 </button>
-
+    
+<button class="category-btn" onclick="startGame('mix')">
+🎲 Микс
+</button>
 </div>
 
 
@@ -206,6 +209,19 @@ document.getElementById("categories").classList.remove("hidden");
 function startGame(category){
 
 currentCategory = category;
+if(category === "mix"){
+
+let allQuestions = [];
+
+for(let key in cards){
+
+allQuestions = allQuestions.concat(cards[key]);
+
+}
+
+cards.mix = allQuestions;
+
+}
 
 cards[currentCategory] = cards[currentCategory]
 .sort(() => Math.random() - 0.5);
@@ -237,7 +253,8 @@ let categoryNames = {
 feelings: "💗 Чувства",
 dreams: "✨ Мечты",
 honest: "🌙 Откровенно",
-fun: "😄 Весёлые"
+fun: "😄 Весёлые",
+ mix: "🎲 МIX"   
 };
 
 document.getElementById("category").innerHTML =
